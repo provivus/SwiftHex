@@ -2,7 +2,7 @@
 //  SwiftHex.swift
 //  SwiftHex
 //
-//  Created by Teo on 20/05/15.
+//  Adapted from code from Stack Overflow.
 //  Copyright (c) 2015 Teo. All rights reserved.
 //
 
@@ -21,11 +21,12 @@ public func encodeToString(hexBytes: [uint8]) -> String {
 private func trimString(theString: String) -> String? {
     let trimmedString = theString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<> ")).stringByReplacingOccurrencesOfString(" ", withString: "")
     
-    // make sure the cleaned up string consists solely of hex digits, and that we have even number of them
-    
+    // Clean up string to remove non-hex digits.
+    // Ensure there is an even number of digits.
     var error: NSError?
     let regex = NSRegularExpression(pattern: "^[0-9a-f]*$", options: .CaseInsensitive, error: &error)
     let found = regex?.firstMatchInString(trimmedString, options: nil, range: NSMakeRange(0, count(trimmedString)))
+    
     if found == nil || found?.range.location == NSNotFound || count(trimmedString) % 2 != 0 {
         return nil
     }
