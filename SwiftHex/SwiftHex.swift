@@ -70,15 +70,12 @@ func fromHexChar(hexChar: UInt8) -> UInt8? {
     
     switch UnicodeScalar(hexChar) {
     case let c where c >= UnicodeScalar("0") && c <= UnicodeScalar("9") :
-        print("0-9")
         return UInt8(c.value - UnicodeScalar("0").value)
         
     case let c where c >= UnicodeScalar("a") && c <= UnicodeScalar("f") :
-        print("a-f")
         return UInt8(c.value - UnicodeScalar("a").value + 10)
         
     case let c where c >= UnicodeScalar("A") && c <= UnicodeScalar("F") :
-        print("A-F")
         return UInt8(c.value - UnicodeScalar("A").value + 10)
         
     default:
