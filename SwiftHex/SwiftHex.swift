@@ -16,7 +16,7 @@ enum HexError : ErrorType {
 }
 
 
-public func encodeToString(hexBytes: [uint8]) -> String {
+public func encodeToString(hexBytes: [UInt8]) -> String {
     var outString = ""
     for val in hexBytes {
         // Prefix with 0 for values less than 16.

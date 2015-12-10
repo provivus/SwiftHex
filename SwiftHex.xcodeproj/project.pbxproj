@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB342BC51B0CC6B700BB8D19 /* SwiftHex.h in Headers */ = {isa = PBXBuildFile; fileRef = AB342BC41B0CC6B700BB8D19 /* SwiftHex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB342BCB1B0CC6B700BB8D19 /* SwiftHex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB342BBF1B0CC6B700BB8D19 /* SwiftHex.framework */; };
 		AB342BD21B0CC6B700BB8D19 /* SwiftHexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB342BD11B0CC6B700BB8D19 /* SwiftHexTests.swift */; };
 		AB342BDC1B0CC6CA00BB8D19 /* SwiftHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB342BDB1B0CC6CA00BB8D19 /* SwiftHex.swift */; };
@@ -26,7 +25,6 @@
 /* Begin PBXFileReference section */
 		AB342BBF1B0CC6B700BB8D19 /* SwiftHex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftHex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB342BC31B0CC6B700BB8D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB342BC41B0CC6B700BB8D19 /* SwiftHex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftHex.h; sourceTree = "<group>"; };
 		AB342BCA1B0CC6B700BB8D19 /* SwiftHexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftHexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB342BD01B0CC6B700BB8D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB342BD11B0CC6B700BB8D19 /* SwiftHexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHexTests.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				AB342BDB1B0CC6CA00BB8D19 /* SwiftHex.swift */,
-				AB342BC41B0CC6B700BB8D19 /* SwiftHex.h */,
 				AB342BC21B0CC6B700BB8D19 /* Supporting Files */,
 			);
 			path = SwiftHex;
@@ -112,7 +109,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB342BC51B0CC6B700BB8D19 /* SwiftHex.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,11 +269,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "i386 x86_64 armv7 armv7s arm64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -313,9 +312,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+				VALID_ARCHS = "i386 x86_64 armv7 armv7s arm64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -333,7 +335,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SwiftHex/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Terminal-Glow.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -355,7 +357,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SwiftHex/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Terminal-Glow.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -377,7 +379,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = SwiftHexTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Terminal-Glow.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -392,7 +394,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = SwiftHexTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Terminal-Glow.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
