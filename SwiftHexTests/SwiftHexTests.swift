@@ -16,7 +16,7 @@ class SwiftHexTests: XCTestCase {
     func testHexDecode() {
         
         let testDecoder = { (hexString: String, hexBytes: [UInt8]) throws -> () in
-            let decStr = try SwiftHex.decodeString(hexString)
+            let decStr = try SwiftHex.decodeString(hexString: hexString)
             XCTAssert(decStr == hexBytes)
         }
         
@@ -32,7 +32,7 @@ class SwiftHexTests: XCTestCase {
     func testHexEncode() {
         
         let testEncoder = { (hexString: String, hexBytes: [UInt8]) -> () in
-            let encStr = SwiftHex.encodeToString(hexBytes)
+            let encStr = SwiftHex.encodeToString(hexBytes: hexBytes)
             XCTAssert(encStr == hexString)
         }
         

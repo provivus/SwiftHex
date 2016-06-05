@@ -10,7 +10,7 @@ import Foundation
 
 let hexTable = "0123456789abcdef"
 
-enum HexError : ErrorType {
+enum HexError : ErrorProtocol {
     case OddLength
     case InvalidByte
 }
@@ -27,14 +27,15 @@ public func encodeToString(hexBytes: [UInt8]) -> String {
 }
 
 private func trimString(theString: String) -> String? {
-    let trimmedString = theString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<> ")).stringByReplacingOccurrencesOfString(" ", withString: "")
+    
+    let trimmedString = theString.trimmingCharacters(in: NSCharacterSet(charactersIn: "<> ")).replacingOccurrences(of: " ", with: "")
     
     // Clean up string to remove non-hex digits.
     // Ensure there is an even number of digits.
     do {
         
-        let regex = try NSRegularExpression(pattern: "^[0-9a-f]*$", options: .CaseInsensitive)
-        let found = regex.firstMatchInString(trimmedString, options: [], range: NSMakeRange(0, trimmedString.characters.count))
+        let regex = try NSRegularExpression(pattern: "^[0-9a-f]*$", options: .caseInsensitive)
+        let found = regex.firstMatch(in: trimmedString, options: [], range: NSMakeRange(0, trimmedString.characters.count))
             
         if found == nil || found?.range.location == NSNotFound || trimmedString.characters.count % 2 != 0 {
             return nil
@@ -56,9 +57,9 @@ func decode(source: [UInt8]) throws -> [UInt8] {
     if srcLength % 2 == 1 { throw HexError.OddLength }
     
     for i in 0..<srcLength/2 {
-        guard let hexVal1 = fromHexChar(source[i<<1]) else { throw HexError.InvalidByte }
+        guard let hexVal1 = fromHexChar(hexChar: source[i<<1]) else { throw HexError.InvalidByte }
         
-        guard let hexVal2 = fromHexChar(source[(i<<1)+1]) else { throw HexError.InvalidByte }
+        guard let hexVal2 = fromHexChar(hexChar: source[(i<<1)+1]) else { throw HexError.InvalidByte }
         
         decoded.append(hexVal1 << 4 | hexVal2)
     }
@@ -86,6 +87,6 @@ func fromHexChar(hexChar: UInt8) -> UInt8? {
 /** Takes a hexadecimal number as a string and converts it into bytes.*/
 public func decodeString(hexString: String) throws -> [UInt8] {
     let src = [UInt8](hexString.utf8)
-    let dest = try decode(src)
+    let dest = try decode(source: src)
     return dest
 }
