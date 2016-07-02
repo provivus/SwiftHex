@@ -28,13 +28,13 @@ public func encodeToString(hexBytes: [UInt8]) -> String {
 
 private func trimString(theString: String) -> String? {
     
-    let trimmedString = theString.trimmingCharacters(in: NSCharacterSet(charactersIn: "<> ")).replacingOccurrences(of: " ", with: "")
-    
+	let trimmedString = theString.trimmingCharacters(in: CharacterSet(charactersIn: "<> ")).replacingOccurrences(of: " ", with: "")
+	
     // Clean up string to remove non-hex digits.
     // Ensure there is an even number of digits.
     do {
         
-        let regex = try NSRegularExpression(pattern: "^[0-9a-f]*$", options: .caseInsensitive)
+        let regex = try RegularExpression(pattern: "^[0-9a-f]*$", options: .caseInsensitive)
         let found = regex.firstMatch(in: trimmedString, options: [], range: NSMakeRange(0, trimmedString.characters.count))
             
         if found == nil || found?.range.location == NSNotFound || trimmedString.characters.count % 2 != 0 {
