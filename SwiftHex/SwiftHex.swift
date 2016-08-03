@@ -10,7 +10,7 @@ import Foundation
 
 let hexTable = "0123456789abcdef"
 
-enum HexError : ErrorProtocol {
+enum HexError : Error {
     case OddLength
     case InvalidByte
 }
@@ -34,7 +34,7 @@ private func trimString(theString: String) -> String? {
     // Ensure there is an even number of digits.
     do {
         
-        let regex = try RegularExpression(pattern: "^[0-9a-f]*$", options: .caseInsensitive)
+        let regex = try NSRegularExpression(pattern: "^[0-9a-f]*$", options: .caseInsensitive)
         let found = regex.firstMatch(in: trimmedString, options: [], range: NSMakeRange(0, trimmedString.characters.count))
             
         if found == nil || found?.range.location == NSNotFound || trimmedString.characters.count % 2 != 0 {
