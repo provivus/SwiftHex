@@ -74,14 +74,17 @@ func fromHexChar(hexChar: UInt8) -> UInt8? {
         return UInt8(c.value - UnicodeScalar("0").value)
         
     case let c where c >= UnicodeScalar("a") && c <= UnicodeScalar("f") :
-        return UInt8(c.value - UnicodeScalar("a").value + 10)
+        let val = c.value - UnicodeScalar("a").value + 10
+        return UInt8(val)
         
     case let c where c >= UnicodeScalar("A") && c <= UnicodeScalar("F") :
-        return UInt8(c.value - UnicodeScalar("A").value + 10)
+        let val = c.value - UnicodeScalar("A").value + 10
+        return UInt8(val)
         
     default:
         return nil
     }
+    
 }
 
 /** Takes a hexadecimal number as a string and converts it into bytes.*/
